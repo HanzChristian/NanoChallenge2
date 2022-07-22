@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Deck" representedClassName="Deck" syncable="YES" codeGenerationType="class">
-        <attribute name="deckCategory" attributeType="String"/>
+    <entity name="Card" representedClassName="Card" syncable="YES">
+        <attribute name="cardCategory" optional="YES" attributeType="String"/>
+        <attribute name="cardIndex" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="cardText" optional="YES" attributeType="String"/>
+        <attribute name="cardTitle" optional="YES" attributeType="String"/>
+        <attribute name="cardType" optional="YES" attributeType="String"/>
+        <relationship name="cardRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Deck" inverseName="deckRelationship" inverseEntity="Deck"/>
+    </entity>
+    <entity name="Deck" representedClassName="Deck" syncable="YES">
         <attribute name="deckName" attributeType="String"/>
-        <attribute name="deckType" attributeType="String"/>
-        <attribute name="deckWords" attributeType="String"/>
+        <relationship name="deckRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Card" inverseName="cardRelationship" inverseEntity="Card"/>
     </entity>
     <elements>
-        <element name="Deck" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Deck" positionX="-63" positionY="-18" width="128" height="59"/>
+        <element name="Card" positionX="-54" positionY="27" width="128" height="119"/>
     </elements>
 </model>

@@ -8,19 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		15610F4A288A6D160031A3C9 /* NC2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F49288A6D160031A3C9 /* NC2App.swift */; };
-		15610F4C288A6D160031A3C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F4B288A6D160031A3C9 /* ContentView.swift */; };
+		15610F4C288A6D160031A3C9 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F4B288A6D160031A3C9 /* DeckView.swift */; };
 		15610F4E288A6D160031A3C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15610F4D288A6D160031A3C9 /* Assets.xcassets */; };
 		15610F51288A6D160031A3C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15610F50288A6D160031A3C9 /* Preview Assets.xcassets */; };
 		15610F59288A6D400031A3C9 /* ContentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15610F57288A6D400031A3C9 /* ContentModel.xcdatamodeld */; };
+		15610F5B288A9EE60031A3C9 /* SpellingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F5A288A9EE60031A3C9 /* SpellingView.swift */; };
+		15610F64288AB0A30031A3C9 /* Card+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F60288AB0A30031A3C9 /* Card+CoreDataClass.swift */; };
+		15610F65288AB0A30031A3C9 /* Card+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F61288AB0A30031A3C9 /* Card+CoreDataProperties.swift */; };
+		15610F66288AB0A30031A3C9 /* Deck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F62288AB0A30031A3C9 /* Deck+CoreDataClass.swift */; };
+		15610F67288AB0A30031A3C9 /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F63288AB0A30031A3C9 /* Deck+CoreDataProperties.swift */; };
+		15610F6A288AB1A90031A3C9 /* contentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F69288AB1A90031A3C9 /* contentData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		15610F46288A6D160031A3C9 /* NC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NC2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15610F49288A6D160031A3C9 /* NC2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC2App.swift; sourceTree = "<group>"; };
-		15610F4B288A6D160031A3C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		15610F4B288A6D160031A3C9 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
 		15610F4D288A6D160031A3C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15610F50288A6D160031A3C9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		15610F58288A6D400031A3C9 /* ContentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContentModel.xcdatamodel; sourceTree = "<group>"; };
+		15610F5A288A9EE60031A3C9 /* SpellingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingView.swift; sourceTree = "<group>"; };
+		15610F60288AB0A30031A3C9 /* Card+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataClass.swift"; sourceTree = "<group>"; };
+		15610F61288AB0A30031A3C9 /* Card+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		15610F62288AB0A30031A3C9 /* Deck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataClass.swift"; sourceTree = "<group>"; };
+		15610F63288AB0A30031A3C9 /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		15610F69288AB1A90031A3C9 /* contentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +65,10 @@
 		15610F48288A6D160031A3C9 /* NC2 */ = {
 			isa = PBXGroup;
 			children = (
+				15610F68288AB0B60031A3C9 /* Models */,
 				15610F49288A6D160031A3C9 /* NC2App.swift */,
-				15610F4B288A6D160031A3C9 /* ContentView.swift */,
+				15610F4B288A6D160031A3C9 /* DeckView.swift */,
+				15610F5A288A9EE60031A3C9 /* SpellingView.swift */,
 				15610F4D288A6D160031A3C9 /* Assets.xcassets */,
 				15610F4F288A6D160031A3C9 /* Preview Content */,
 				15610F57288A6D400031A3C9 /* ContentModel.xcdatamodeld */,
@@ -68,6 +82,18 @@
 				15610F50288A6D160031A3C9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		15610F68288AB0B60031A3C9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				15610F60288AB0A30031A3C9 /* Card+CoreDataClass.swift */,
+				15610F61288AB0A30031A3C9 /* Card+CoreDataProperties.swift */,
+				15610F63288AB0A30031A3C9 /* Deck+CoreDataProperties.swift */,
+				15610F62288AB0A30031A3C9 /* Deck+CoreDataClass.swift */,
+				15610F69288AB1A90031A3C9 /* contentData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +166,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15610F65288AB0A30031A3C9 /* Card+CoreDataProperties.swift in Sources */,
 				15610F59288A6D400031A3C9 /* ContentModel.xcdatamodeld in Sources */,
-				15610F4C288A6D160031A3C9 /* ContentView.swift in Sources */,
+				15610F4C288A6D160031A3C9 /* DeckView.swift in Sources */,
+				15610F64288AB0A30031A3C9 /* Card+CoreDataClass.swift in Sources */,
+				15610F5B288A9EE60031A3C9 /* SpellingView.swift in Sources */,
+				15610F66288AB0A30031A3C9 /* Deck+CoreDataClass.swift in Sources */,
+				15610F6A288AB1A90031A3C9 /* contentData.swift in Sources */,
+				15610F67288AB0A30031A3C9 /* Deck+CoreDataProperties.swift in Sources */,
 				15610F4A288A6D160031A3C9 /* NC2App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
