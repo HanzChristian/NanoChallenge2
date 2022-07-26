@@ -246,7 +246,6 @@ struct CardView:View{
                 }
             }
             
-            
             .navigationBarTitle(Text("\(arrayOfContent[index])")).navigationBarHidden(false)
             .background(Color(hex: "FEFBE7"))
             .accentColor(.white)
@@ -260,7 +259,6 @@ struct CardView:View{
                             // code to dismiss the view
                             self.presentation.wrappedValue.dismiss()
                         }
-
                 }
             })
     }
