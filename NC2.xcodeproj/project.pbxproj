@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15526548288FFECF0063EB98 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15526547288FFECF0063EB98 /* CardView.swift */; };
 		15610F4A288A6D160031A3C9 /* NC2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F49288A6D160031A3C9 /* NC2App.swift */; };
 		15610F4C288A6D160031A3C9 /* DeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F4B288A6D160031A3C9 /* DeckView.swift */; };
 		15610F4E288A6D160031A3C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15610F4D288A6D160031A3C9 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15526547288FFECF0063EB98 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		15610F46288A6D160031A3C9 /* NC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NC2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15610F49288A6D160031A3C9 /* NC2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NC2App.swift; sourceTree = "<group>"; };
 		15610F4B288A6D160031A3C9 /* DeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				15610F68288AB0B60031A3C9 /* Models */,
 				15610F49288A6D160031A3C9 /* NC2App.swift */,
 				15610F4B288A6D160031A3C9 /* DeckView.swift */,
+				15526547288FFECF0063EB98 /* CardView.swift */,
 				15610F5A288A9EE60031A3C9 /* SpellingView.swift */,
 				15610F4D288A6D160031A3C9 /* Assets.xcassets */,
 				15610F4F288A6D160031A3C9 /* Preview Content */,
@@ -170,6 +173,7 @@
 				15610F59288A6D400031A3C9 /* ContentModel.xcdatamodeld in Sources */,
 				15610F4C288A6D160031A3C9 /* DeckView.swift in Sources */,
 				15610F64288AB0A30031A3C9 /* Card+CoreDataClass.swift in Sources */,
+				15526548288FFECF0063EB98 /* CardView.swift in Sources */,
 				15610F5B288A9EE60031A3C9 /* SpellingView.swift in Sources */,
 				15610F66288AB0A30031A3C9 /* Deck+CoreDataClass.swift in Sources */,
 				15610F6A288AB1A90031A3C9 /* contentData.swift in Sources */,
