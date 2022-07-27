@@ -11,50 +11,7 @@ struct CardView:View{
     
     @Environment(\.presentationMode) var presentation
     
-    //Card Contents
-    @State var arrayOfContent:[String] = ["Product","Decision Making","Motivational","Persuasuve","Progress","Instructive"]
-    
-    @State var productContents = [
-        Content(id: 0, type: "Introduction", category: "Introducing Yourself", words: "Hi everyone, I think we might still be missing a few people but I’m going to kick things off now so we have time to get through everything.",offset: 0,place: 1),
-
-        Content(id: 1, type: "Topic of Presentation", category: "Saying your topic", words: "For the next ... minutes, I am going to be speaking to you about ...",offset: 0,place: 2),
-        
-        Content(id: 2, type: "Question policy", category: "Mind to be interrupted or not?", words: "If you have questions about anything, please kindly wait until the end of the presentation. We’ll have ... minutes for an open discussion at the end. ",offset: 0,place: 3),
-        
-        Content(id: 3, type: "Main presentation", category: "Beginning the main presentation", words: "Let’s start at the very beginning. Many people ask…",offset: 0,place: 4),
-        
-        Content(id: 4, type: "New Section", category: "Switching topic", words: "There’s a lot more to learn about that but since we’re pushed for time, let’s move on to ...",offset: 0,place: 5),
-    
-        Content(id: 5, type: "Ending", category: "Conclusion", words: "Well, that concludes my presentation today. To refresh your memory, the main takeaways are the following. Number one…",offset: 0,place: 6),
-    ]
-
-    @State var decisionContents = [
-        Content(id: 0, type: "Introduction", category: "Introducing Yourself", words: "Hi everyone, I think we might still be missing a few people but I’m going to kick things off now so we have time to get through everything.",offset: 0,place: 1),
-
-        Content(id: 1, type: "Topic of Presentation", category: "Saying your topic", words: "For the next ... minutes, I am going to be speaking to you about ...",offset: 0,place: 2),
-
-        Content(id: 2, type: "Question policy", category: "Mind to be interrupted or not?", words: "If you have questions about anything, please kindly wait until the end of the presentation. We’ll have ... minutes for an open discussion at the end. ",offset: 0,place: 3),
-
-        Content(id: 3, type: "Main presentation", category: "Beginning the main presentation", words: "Let’s start at the very beginning. Many people ask…",offset: 0,place: 4),
-
-        Content(id: 4, type: "New Section", category: "Switching topic", words: "There’s a lot more to learn about that but since we’re pushed for time, let’s move on to ...",offset: 0,place: 5),
-
-        Content(id: 5, type: "Ending", category: "Conclusion", words: "Well, that concludes my presentation today. To refresh your memory, the main takeaways are the following. Number one…",offset: 0,place: 6),
-    ]
-
-    @State var motivationalContents = [
-        Content(id: 0, type: "Introduction", category: "Introducing Yourself", words: "Hi everyone, I think we might still be missing a few people but I’m going to kick things off now so we have time to get through everything.",offset: 0,place: 1),
-
-        Content(id: 1, type: "Topic of Presentation", category: "Saying your topic", words: "For the next ... minutes, I am going to be speaking to you about ...",offset: 0,place: 2),
-
-        Content(id: 2, type: "Question policy", category: "Mind to be interrupted or not?", words: "If you have questions about anything, please kindly wait until the end of the presentation. We’ll have ... minutes for an open discussion at the end. ",offset: 0,place: 3),
-
-        Content(id: 3, type: "Main presentation", category: "Beginning the main presentation", words: "Let’s start at the very beginning. Many people ask…",offset: 0,place: 4),
-
-        Content(id: 4, type: "New Section", category: "Switching topic", words: "There’s a lot more to learn about that but since we’re pushed for time, let’s move on to ...",offset: 0,place: 5),
-
-        Content(id: 5, type: "Ending", category: "Conclusion", words: "Well, that concludes my presentation today. To refresh your memory, the main takeaways are the following. Number one…",offset: 0,place: 6),
-    ]
+    @StateObject var content: CardViewModel = CardViewModel()
 
 
     //Determines how many card are swiped
@@ -63,35 +20,36 @@ struct CardView:View{
     //to loop the cards
     func restoreCard(id: Int){
         if(index == 0){
-            var currentCard = productContents[id]
+            var currentCard = content.productContents[id]
              
-             currentCard.id = productContents.count
-             productContents.append(currentCard)
+            currentCard.id = content.productContents.count
+            //to append more view
+            content.productContents.append(currentCard)
              
              DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                 productContents[productContents.count - 1].offset = 0
+                 content.productContents[ content.productContents.count - 1].offset = 0
              }
         }
         
         if(index == 1){
-            var currentCard = decisionContents[id]
+            var currentCard =  content.decisionContents[id]
              
-             currentCard.id = decisionContents.count
-             decisionContents.append(currentCard)
+            currentCard.id =  content.decisionContents.count
+            content.decisionContents.append(currentCard)
              
              DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                 decisionContents[decisionContents.count - 1].offset = 0
+                 content.decisionContents[ content.decisionContents.count - 1].offset = 0
              }
         }
         
         if(index == 2){
-            var currentCard = motivationalContents[id]
+            var currentCard =  content.motivationalContents[id]
              
-             currentCard.id = motivationalContents.count
-            motivationalContents.append(currentCard)
+            currentCard.id =  content.motivationalContents.count
+            content.motivationalContents.append(currentCard)
              
              DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                 motivationalContents[motivationalContents.count - 1].offset = 0
+                 content.motivationalContents[ content.motivationalContents.count - 1].offset = 0
              }
         }
     }
@@ -120,7 +78,7 @@ struct CardView:View{
                     VStack{
                         ZStack{
                             if(index == 0){
-                                ForEach(productContents.reversed()){Content in
+                                ForEach( content.productContents.reversed()){Content in
                                     ContentView(Content: Content, reader: reader,swiped: $swiped)
                                     //for swipe gesture
                                         .offset(x: Content.offset)
@@ -130,19 +88,19 @@ struct CardView:View{
                                             
                                             withAnimation{
                                                 if (value.translation.width > 0){
-                                                    productContents[Content.id].offset = value.translation.width
+                                                    content.productContents[Content.id].offset = value.translation.width
                                                 }
                                             }
                                         }).onEnded({ (value) in
                                             
                                             withAnimation{
                                                 if (value.translation.width > 150){
-                                                    productContents[Content.id].offset = 1000
+                                                    content.productContents[Content.id].offset = 1000
                                                     swiped = Content.id + 1
                                                     restoreCard(id: Content.id)
                                                 }
                                                 else{
-                                                    productContents[Content.id].offset = 0
+                                                    content.productContents[Content.id].offset = 0
                                                 }
                                             }
                                         }))
@@ -150,7 +108,7 @@ struct CardView:View{
                             }
                             
                             if(index == 1){
-                                ForEach(decisionContents.reversed()){Content in
+                                ForEach( content.decisionContents.reversed()){Content in
                                     ContentView(Content: Content, reader: reader,swiped: $swiped)
                                     //for swipe gesture
                                         .offset(x: Content.offset)
@@ -160,19 +118,19 @@ struct CardView:View{
                                             
                                             withAnimation{
                                                 if (value.translation.width > 0){
-                                                    decisionContents[Content.id].offset = value.translation.width
+                                                    content.decisionContents[Content.id].offset = value.translation.width
                                                 }
                                             }
                                         }).onEnded({ (value) in
                                             
                                             withAnimation{
                                                 if (value.translation.width > 150){
-                                                    decisionContents[Content.id].offset = 1000
+                                                    content.decisionContents[Content.id].offset = 1000
                                                     swiped = Content.id + 1
                                                     restoreCard(id: Content.id)
                                                 }
                                                 else{
-                                                    decisionContents[Content.id].offset = 0
+                                                    content.decisionContents[Content.id].offset = 0
                                                 }
                                             }
                                         }))
@@ -180,7 +138,7 @@ struct CardView:View{
                             }
                             
                             if(index == 2){
-                                ForEach(motivationalContents.reversed()){Content in
+                                ForEach( content.motivationalContents.reversed()){Content in
                                     ContentView(Content: Content, reader: reader,swiped: $swiped)
                                     //for swipe gesture
                                         .offset(x: Content.offset)
@@ -190,19 +148,19 @@ struct CardView:View{
                                             
                                             withAnimation{
                                                 if (value.translation.width > 0){
-                                                    motivationalContents[Content.id].offset = value.translation.width
+                                                    content.motivationalContents[Content.id].offset = value.translation.width
                                                 }
                                             }
                                         }).onEnded({ (value) in
                                             
                                             withAnimation{
                                                 if (value.translation.width > 150){
-                                                    motivationalContents[Content.id].offset = 1000
+                                                    content.motivationalContents[Content.id].offset = 1000
                                                     swiped = Content.id + 1
                                                     restoreCard(id: Content.id)
                                                 }
                                                 else{
-                                                    motivationalContents[Content.id].offset = 0
+                                                    content.motivationalContents[Content.id].offset = 0
                                                 }
                                             }
                                         }))
@@ -221,15 +179,12 @@ struct CardView:View{
                                 Spacer(minLength: 5)
                                 
                                 NavigationLink(destination: SpellingView(index: index)){
-                                    Button(action: {
-                                    }) {
                                         Text("Spelling Practice").font(.system(size: 24).weight(.bold))
                                             .foregroundColor(Color(hex: "476F78"))
-                                    }
-                                        .frame(width: 350, height: 50)
-                                        .background(Color(hex: "DAE5D0"))
-                                        .cornerRadius(10)
-                                        .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 5)
+                                            .frame(width: 350, height: 50)
+                                            .background(Color(hex: "DAE5D0"))
+                                            .cornerRadius(10)
+                                            .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 5)
                                 }
                                 
                             }
@@ -246,7 +201,7 @@ struct CardView:View{
                 }
             }
             
-            .navigationBarTitle(Text("\(arrayOfContent[index])")).navigationBarHidden(false)
+            .navigationBarTitle(Text("\(content.arrayOfContent[index])")).navigationBarHidden(false)
             .background(Color(hex: "FEFBE7"))
             .accentColor(.white)
             //Changes to back button color

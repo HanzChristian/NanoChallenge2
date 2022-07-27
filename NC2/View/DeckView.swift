@@ -85,13 +85,3 @@ extension Color {
     }
 }
 
-//Sample data
-struct Content: Identifiable{
-    var id: Int
-    var type : String
-    var category : String
-    var words: String
-    var offset: CGFloat
-    var place: Int
-}
-
