@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
+import Speech
 
 struct SpellingView: View {
     @Environment(\.presentationMode) var presentation
     
     @StateObject var content: CardViewModel = CardViewModel()
     
+    @EnvironmentObject var swiftUISpeech:SwiftUISpeech
     
-    @State private var record:Bool = false
+//    @State private var record:Bool = false
     
     @State var index:Int = 0
     //    var Content:Content
@@ -129,53 +131,81 @@ struct SpellingView: View {
                         .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
                     }
                                 
-                    Button(action: {
-                        if(record == false)
-                        {
-                            record = true
-                        }
-                        
-                        else{
-                            record = false
-                        }
-                        }
-                    ){
-                        if(record == false){
-                            Image("record")
-                                .resizable().frame(width: 88, height: 88)
-                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
-                        }
-                        else{
-                            Image("stop")
-                                .resizable().frame(width: 88, height: 88)
-                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
-                        }
-                    }
-                    .padding(.leading,20)
-                    .padding(.top,-87)
+//                    Button(action: {
+//                        if(record == false)
+//                        {
+//                            record = true
+//                        }
+//
+//                        else{
+//                            record = false
+//                        }
+//                        }
+//                    )
+//                      {
+//                        if(record == false){
+//                            Image("record")
+//                                .resizable().frame(width: 88, height: 88)
+//                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+//                        }
+//                        else{
+//                            Image("stop")
+//                                .resizable().frame(width: 88, height: 88)
+//                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+//                        }
+//                    }
                     
-                    Button(action: {
-                        arrayIndex += 1
-                    }) {
-                        if(index == 0 && arrayIndex == content.productContents.count - 1 || index == 1 && arrayIndex == content.decisionContents.count - 1 || index == 2 && arrayIndex == content.motivationalContents.count - 1){
-                            Text("Finish").font(.system(size: 24).weight(.bold))
+                    swiftUISpeech.getButton()
+                        .offset(x:20,y:-87)
+    
+//                    SpeechButton().environmentObject(swiftUISpeech)
+                    
+                    HStack{
+                        if(arrayIndex != 0){
+                            Button(action:{
+                                arrayIndex -= 1
+                            }){
+                                Text("Previous").font(.system(size: 24).weight(.bold))
+                                    .foregroundColor(Color(hex: "476F78"))
+                            }
+                            .frame(width: 150, height: 50)
+                            .background(Color(hex: "DAE5D0"))
+                            .cornerRadius(10)
+                            .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 5)
+                            .padding(.leading,25)
+                            .padding(.top,30)
+                        }
+                           
+                        Button(action: {
+                            arrayIndex += 1
+                        }) {
+                            if(index == 0 && arrayIndex == content.productContents.count - 1 || index == 1 && arrayIndex == content.decisionContents.count - 1 || index == 2 && arrayIndex == content.motivationalContents.count - 1){
+                                Text("Finish").font(.system(size: 24).weight(.bold))
+                                    .foregroundColor(Color(hex: "476F78"))
+                                    .onTapGesture {
+                                        // code to dismiss the view
+                                        self.presentation.wrappedValue.dismiss()
+                                    }
+                            }
+                            else{
+                            Text("Next").font(.system(size: 24).weight(.bold))
                                 .foregroundColor(Color(hex: "476F78"))
-                                .onTapGesture {
-                                    // code to dismiss the view
-                                    self.presentation.wrappedValue.dismiss()
-                                }
+                            }
                         }
-                        else{
-                        Text("New Word!").font(.system(size: 24).weight(.bold))
-                            .foregroundColor(Color(hex: "476F78"))
-                        }
+                            .frame(width: 150, height: 50)
+                            .background(Color(hex: "DAE5D0"))
+                            .cornerRadius(10)
+                            .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 5)
+                            .padding(.leading,25)
+                            .padding(.top,30)
+                        
+//                        Text("\(swiftUISpeech.outputText)")
+//                            .font(.title)
+//                            .bold()
+//                            .frame(width: 100, height: 100)
+                        
+//                        print("\(swiftUISpeech.outputText)")
                     }
-                        .frame(width: 300, height: 50)
-                        .background(Color(hex: "DAE5D0"))
-                        .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 5)
-                        .padding(.leading,25)
-                        .padding(.top,30)
                 }
                 .padding()
             }
@@ -201,6 +231,6 @@ struct SpellingView: View {
 
 struct SpellingView_Previews: PreviewProvider {
     static var previews: some View {
-        SpellingView()
+        SpellingView().environmentObject(SwiftUISpeech())
     }
 }

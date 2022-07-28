@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Speech
 
 // 1st View
 struct DeckView: View {
+    @EnvironmentObject var swiftUISpeech : SwiftUISpeech
     
     private let columns = [
         GridItem(.adaptive(minimum: 150))
@@ -44,6 +46,9 @@ struct DeckView: View {
             }
             .navigationBarTitle(Text("List of Decks")).navigationBarHidden(false)
             .background(Color(hex: "FEFBE7"))
+            .onAppear(){
+                swiftUISpeech.getAuth()
+            }
         }
     }
     
@@ -52,7 +57,7 @@ struct DeckView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        DeckView()
+        DeckView().environmentObject(SwiftUISpeech())
     }
 }
 

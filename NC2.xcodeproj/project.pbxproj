@@ -20,6 +20,10 @@
 		15610F67288AB0A30031A3C9 /* Deck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F63288AB0A30031A3C9 /* Deck+CoreDataProperties.swift */; };
 		15610F6A288AB1A90031A3C9 /* contentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15610F69288AB1A90031A3C9 /* contentData.swift */; };
 		1571C4CB28911F0700F2D5C2 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571C4CA28911F0700F2D5C2 /* Content.swift */; };
+		157CCD7F289262B20068AB67 /* SwiftUISpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CCD7E289262B20068AB67 /* SwiftUISpeech.swift */; };
+		157CCD82289264590068AB67 /* SpeechButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CCD81289264590068AB67 /* SpeechButton.swift */; };
+		157CCD84289264F80068AB67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CCD83289264F80068AB67 /* SceneDelegate.swift */; };
+		157CCD86289269B30068AB67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157CCD85289269B30068AB67 /* AppDelegate.swift */; };
 		15A814592891195C00BCCCD0 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A814582891195C00BCCCD0 /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +42,10 @@
 		15610F63288AB0A30031A3C9 /* Deck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deck+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		15610F69288AB1A90031A3C9 /* contentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentData.swift; sourceTree = "<group>"; };
 		1571C4CA28911F0700F2D5C2 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		157CCD7E289262B20068AB67 /* SwiftUISpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISpeech.swift; sourceTree = "<group>"; };
+		157CCD81289264590068AB67 /* SpeechButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechButton.swift; sourceTree = "<group>"; };
+		157CCD83289264F80068AB67 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		157CCD85289269B30068AB67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A814582891195C00BCCCD0 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,11 +79,14 @@
 		15610F48288A6D160031A3C9 /* NC2 */ = {
 			isa = PBXGroup;
 			children = (
+				157CCD80289264350068AB67 /* Speech Recognition */,
 				15610F68288AB0B60031A3C9 /* Models */,
 				1571C4CC28911F3900F2D5C2 /* View */,
 				1571C4C828911EB000F2D5C2 /* ViewModel */,
 				15610F49288A6D160031A3C9 /* NC2App.swift */,
 				15610F4D288A6D160031A3C9 /* Assets.xcassets */,
+				157CCD83289264F80068AB67 /* SceneDelegate.swift */,
+				157CCD85289269B30068AB67 /* AppDelegate.swift */,
 				15610F4F288A6D160031A3C9 /* Preview Content */,
 				15610F57288A6D400031A3C9 /* ContentModel.xcdatamodeld */,
 			);
@@ -119,6 +130,15 @@
 				15610F5A288A9EE60031A3C9 /* SpellingView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		157CCD80289264350068AB67 /* Speech Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				157CCD7E289262B20068AB67 /* SwiftUISpeech.swift */,
+				157CCD81289264590068AB67 /* SpeechButton.swift */,
+			);
+			path = "Speech Recognition";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,13 +216,17 @@
 				15610F59288A6D400031A3C9 /* ContentModel.xcdatamodeld in Sources */,
 				15610F4C288A6D160031A3C9 /* DeckView.swift in Sources */,
 				15610F64288AB0A30031A3C9 /* Card+CoreDataClass.swift in Sources */,
+				157CCD84289264F80068AB67 /* SceneDelegate.swift in Sources */,
+				157CCD82289264590068AB67 /* SpeechButton.swift in Sources */,
 				15526548288FFECF0063EB98 /* CardView.swift in Sources */,
+				157CCD86289269B30068AB67 /* AppDelegate.swift in Sources */,
 				15610F5B288A9EE60031A3C9 /* SpellingView.swift in Sources */,
 				15610F66288AB0A30031A3C9 /* Deck+CoreDataClass.swift in Sources */,
 				15610F6A288AB1A90031A3C9 /* contentData.swift in Sources */,
 				15610F67288AB0A30031A3C9 /* Deck+CoreDataProperties.swift in Sources */,
 				15610F4A288A6D160031A3C9 /* NC2App.swift in Sources */,
 				1571C4CB28911F0700F2D5C2 /* Content.swift in Sources */,
+				157CCD7F289262B20068AB67 /* SwiftUISpeech.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +358,8 @@
 				DEVELOPMENT_TEAM = BX9VA5G2BF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to transcribe the meeting. Audio recordings are discarded after transcription.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "You can view a text transcription of your meeting in the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -363,6 +389,8 @@
 				DEVELOPMENT_TEAM = BX9VA5G2BF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to transcribe the meeting. Audio recordings are discarded after transcription.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "You can view a text transcription of your meeting in the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

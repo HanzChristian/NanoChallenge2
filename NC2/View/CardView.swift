@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Speech
 
 struct CardView:View{
     
