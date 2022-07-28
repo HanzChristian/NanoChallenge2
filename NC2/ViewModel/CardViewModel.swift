@@ -19,7 +19,7 @@ class CardViewModel: ObservableObject{
         arrayOfContent = ["Product","Decision Making","Motivational","Persuasive","Progress","Instructive"]
         
         productContents = [
-            Content(id: 0, type: "Introduction", category: "Introducing Yourself", words: "Hi everyone, I think we might still be missing a few people but I’m going to kick things off now so we have time to get through everything.",offset: 0,place: 1),
+            Content(id: 0, type: "Introduction", category: "Introducing Yourself", words: "Hi everyone",offset: 0,place: 1),
             
             Content(id: 1, type: "Topic of Presentation", category: "Saying your topic", words: "For the next ... minutes, I am going to be speaking to you about ...",offset: 0,place: 2),
             

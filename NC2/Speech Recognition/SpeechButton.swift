@@ -13,6 +13,8 @@ struct SpeechButton: View {
     
     @State var isPressed:Bool = false
     @State var actionPop:Bool = false
+    @AppStorage("toogle") var record:Bool = false
+    
     @EnvironmentObject var swiftUISpeech:SwiftUISpeech
     
     var body: some View {
@@ -28,6 +30,7 @@ struct SpeechButton: View {
                 }
                 else{
                     self.swiftUISpeech.stopRecording()
+                    record = true
                     isPressed = false
                     print("\(swiftUISpeech.outputText)")
                 }

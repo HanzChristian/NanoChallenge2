@@ -15,7 +15,7 @@ struct SpellingView: View {
     
     @EnvironmentObject var swiftUISpeech:SwiftUISpeech
     
-//    @State private var record:Bool = false
+    @AppStorage("toogle") var record:Bool = false
     
     @State var index:Int = 0
     //    var Content:Content
@@ -32,6 +32,7 @@ struct SpellingView: View {
             
             GeometryReader{reader in
                 VStack{
+                    
                     if(index == 0){
                         Text("Type : \(content.productContents[arrayIndex].type)")
                             .font(.system(size: 20).weight(.bold))
@@ -41,19 +42,47 @@ struct SpellingView: View {
                         ZStack{
                             VStack(){
                                 ZStack{
-                                    Rectangle()
-                                        .frame(width: 277, height: 56)
-                                        .foregroundColor(Color(hex: "5C929D"))
-                                        .cornerRadius(20)
-                                    Text("Try to Speak it!").font(.system(size: 24))
-                                        .foregroundColor(.white)
+                                    if(record == false){
+                                        Rectangle()
+                                            .frame(width: 277, height: 56)
+                                            .foregroundColor(Color(hex: "5C929D"))
+                                            .cornerRadius(20)
+                                        
+                                        Text("Try to speak it!").font(.system(size: 24))
+                                            .foregroundColor(.white)
+                                    }
+                                    
+                                    if(record == true){
+                                        if(swiftUISpeech.outputText == content.productContents[arrayIndex].words){
+                                            
+                                            Rectangle()
+                                                .frame(width: 277, height: 56)
+                                                .foregroundColor(Color(hex: "3390E7"))
+                                                .cornerRadius(20)
+                                            
+                                            Text("You are Correct!").font(.system(size: 24))
+                                                .foregroundColor(.white)
+                                        }
+                                        else if(swiftUISpeech.outputText != content.productContents[arrayIndex].words){
+                                            
+                                            Rectangle()
+                                                .frame(width: 277, height: 56)
+                                                .foregroundColor(Color(hex: "D95959"))
+                                                .cornerRadius(20)
+                                            
+                                            Text("Try again!").font(.system(size: 24))
+                                                .foregroundColor(.white)
+                                            
+                                        }
+                                    }
+                                    
                                 }
                                 
                                 Text("\(content.productContents[arrayIndex].words)").font(.system(size: 20).weight(.bold))
-                                        .foregroundColor(Color(hex: "476F78"))
-                                        .padding(.leading,20)
-                                        .padding(.trailing,20)
-                                        .frame(height:150)
+                                    .foregroundColor(Color(hex: "476F78"))
+                                    .padding(.leading,20)
+                                    .padding(.trailing,20)
+                                    .frame(height:150)
                             }
                             .padding(.bottom,90)
                         }
@@ -83,10 +112,10 @@ struct SpellingView: View {
                                 }
                                 
                                 Text("\(content.decisionContents[arrayIndex].words)").font(.system(size: 20).weight(.bold))
-                                        .foregroundColor(Color(hex: "476F78"))
-                                        .padding(.leading,20)
-                                        .padding(.trailing,20)
-                                        .frame(height:150)
+                                    .foregroundColor(Color(hex: "476F78"))
+                                    .padding(.leading,20)
+                                    .padding(.trailing,20)
+                                    .frame(height:150)
                             }
                             .padding(.bottom,90)
                         }
@@ -99,7 +128,7 @@ struct SpellingView: View {
                     }
                     
                     if(index == 2){
-                        Text("Type : \(  content.motivationalContents[arrayIndex].type)")
+                        Text("Type : \( content.motivationalContents[arrayIndex].type)")
                             .font(.system(size: 20).weight(.bold))
                             .frame(width: 300,height: 40)
                             .foregroundColor(Color(hex: "476F78"))
@@ -116,10 +145,10 @@ struct SpellingView: View {
                                 }
                                 
                                 Text("\(content.motivationalContents[arrayIndex].words)").font(.system(size: 20).weight(.bold))
-                                        .foregroundColor(Color(hex: "476F78"))
-                                        .padding(.leading,20)
-                                        .padding(.trailing,20)
-                                        .frame(height:150)
+                                    .foregroundColor(Color(hex: "476F78"))
+                                    .padding(.leading,20)
+                                    .padding(.trailing,20)
+                                    .frame(height:150)
                             }
                             .padding(.bottom,90)
                         }
@@ -130,39 +159,16 @@ struct SpellingView: View {
                         .padding(.bottom,30)
                         .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
                     }
-                                
-//                    Button(action: {
-//                        if(record == false)
-//                        {
-//                            record = true
-//                        }
-//
-//                        else{
-//                            record = false
-//                        }
-//                        }
-//                    )
-//                      {
-//                        if(record == false){
-//                            Image("record")
-//                                .resizable().frame(width: 88, height: 88)
-//                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
-//                        }
-//                        else{
-//                            Image("stop")
-//                                .resizable().frame(width: 88, height: 88)
-//                                .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
-//                        }
-//                    }
                     
                     swiftUISpeech.getButton()
-                        .offset(x:20,y:-87)
-    
-//                    SpeechButton().environmentObject(swiftUISpeech)
+                        .padding(.leading,20)
+                        .padding(.top,-87)
+                    
                     
                     HStack{
                         if(arrayIndex != 0){
                             Button(action:{
+                                record = false
                                 arrayIndex -= 1
                             }){
                                 Text("Previous").font(.system(size: 24).weight(.bold))
@@ -172,12 +178,12 @@ struct SpellingView: View {
                             .background(Color(hex: "DAE5D0"))
                             .cornerRadius(10)
                             .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 5)
-                            .padding(.leading,25)
-                            .padding(.top,30)
+                            .offset(y: 30)
                         }
-                           
+                        
                         Button(action: {
                             arrayIndex += 1
+                            record = false
                         }) {
                             if(index == 0 && arrayIndex == content.productContents.count - 1 || index == 1 && arrayIndex == content.decisionContents.count - 1 || index == 2 && arrayIndex == content.motivationalContents.count - 1){
                                 Text("Finish").font(.system(size: 24).weight(.bold))
@@ -188,23 +194,22 @@ struct SpellingView: View {
                                     }
                             }
                             else{
-                            Text("Next").font(.system(size: 24).weight(.bold))
-                                .foregroundColor(Color(hex: "476F78"))
+                                Text("Next").font(.system(size: 24).weight(.bold))
+                                    .foregroundColor(Color(hex: "476F78"))
                             }
                         }
-                            .frame(width: 150, height: 50)
-                            .background(Color(hex: "DAE5D0"))
-                            .cornerRadius(10)
-                            .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 5)
-                            .padding(.leading,25)
-                            .padding(.top,30)
+                        .frame(width: 150, height: 50)
+                        .background(Color(hex: "DAE5D0"))
+                        .cornerRadius(10)
+                        .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 5)
+                        .offset(x:10,y: 30)
                         
-//                        Text("\(swiftUISpeech.outputText)")
-//                            .font(.title)
-//                            .bold()
-//                            .frame(width: 100, height: 100)
+                        //                        Text("\(swiftUISpeech.outputText)")
+                        //                            .font(.title)
+                        //                            .bold()
+                        //                            .frame(width: 100, height: 100)
                         
-//                        print("\(swiftUISpeech.outputText)")
+                        //                        print("\(swiftUISpeech.outputText)")
                     }
                 }
                 .padding()
@@ -226,6 +231,7 @@ struct SpellingView: View {
                 
             }
         })
+        
     }
 }
 
