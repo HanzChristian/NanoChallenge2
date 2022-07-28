@@ -95,7 +95,7 @@ struct SpellingView: View {
                     }
                     
                     if(index == 1){
-                        Text("Type : \( content.decisionContents[arrayIndex].type)")
+                        Text("Type : \(content.decisionContents[arrayIndex].type)")
                             .font(.system(size: 20).weight(.bold))
                             .frame(width: 300,height: 40)
                             .foregroundColor(Color(hex: "476F78"))
@@ -103,12 +103,40 @@ struct SpellingView: View {
                         ZStack{
                             VStack(){
                                 ZStack{
-                                    Rectangle()
-                                        .frame(width: 277, height: 56)
-                                        .foregroundColor(Color(hex: "5C929D"))
-                                        .cornerRadius(20)
-                                    Text("Try to Speak it!").font(.system(size: 24))
-                                        .foregroundColor(.white)
+                                    if(record == false){
+                                        Rectangle()
+                                            .frame(width: 277, height: 56)
+                                            .foregroundColor(Color(hex: "5C929D"))
+                                            .cornerRadius(20)
+                                        
+                                        Text("Try to speak it!").font(.system(size: 24))
+                                            .foregroundColor(.white)
+                                    }
+                                    
+                                    if(record == true){
+                                        if(swiftUISpeech.outputText == content.decisionContents[arrayIndex].words){
+                                            
+                                            Rectangle()
+                                                .frame(width: 277, height: 56)
+                                                .foregroundColor(Color(hex: "3390E7"))
+                                                .cornerRadius(20)
+                                            
+                                            Text("You are Correct!").font(.system(size: 24))
+                                                .foregroundColor(.white)
+                                        }
+                                        else if(swiftUISpeech.outputText != content.decisionContents[arrayIndex].words){
+                                            
+                                            Rectangle()
+                                                .frame(width: 277, height: 56)
+                                                .foregroundColor(Color(hex: "D95959"))
+                                                .cornerRadius(20)
+                                            
+                                            Text("Try again!").font(.system(size: 24))
+                                                .foregroundColor(.white)
+                                            
+                                        }
+                                    }
+                                    
                                 }
                                 
                                 Text("\(content.decisionContents[arrayIndex].words)").font(.system(size: 20).weight(.bold))
@@ -128,7 +156,7 @@ struct SpellingView: View {
                     }
                     
                     if(index == 2){
-                        Text("Type : \( content.motivationalContents[arrayIndex].type)")
+                        Text("Type : \(content.motivationalContents[arrayIndex].type)")
                             .font(.system(size: 20).weight(.bold))
                             .frame(width: 300,height: 40)
                             .foregroundColor(Color(hex: "476F78"))
@@ -136,12 +164,40 @@ struct SpellingView: View {
                         ZStack{
                             VStack(){
                                 ZStack{
-                                    Rectangle()
-                                        .frame(width: 277, height: 56)
-                                        .foregroundColor(Color(hex: "5C929D"))
-                                        .cornerRadius(20)
-                                    Text("Try to Speak it!").font(.system(size: 24))
-                                        .foregroundColor(.white)
+                                    if(record == false){
+                                        Rectangle()
+                                            .frame(width: 277, height: 56)
+                                            .foregroundColor(Color(hex: "5C929D"))
+                                            .cornerRadius(20)
+                                        
+                                        Text("Try to speak it!").font(.system(size: 24))
+                                            .foregroundColor(.white)
+                                    }
+                                    
+                                    if(record == true){
+                                        if(swiftUISpeech.outputText == content.motivationalContents[arrayIndex].words){
+                                            
+                                            Rectangle()
+                                                .frame(width: 277, height: 56)
+                                                .foregroundColor(Color(hex: "3390E7"))
+                                                .cornerRadius(20)
+                                            
+                                            Text("You are Correct!").font(.system(size: 24))
+                                                .foregroundColor(.white)
+                                        }
+                                        else if(swiftUISpeech.outputText != content.motivationalContents[arrayIndex].words){
+                                            
+                                            Rectangle()
+                                                .frame(width: 277, height: 56)
+                                                .foregroundColor(Color(hex: "D95959"))
+                                                .cornerRadius(20)
+                                            
+                                            Text("Try again!").font(.system(size: 24))
+                                                .foregroundColor(.white)
+                                            
+                                        }
+                                    }
+                                    
                                 }
                                 
                                 Text("\(content.motivationalContents[arrayIndex].words)").font(.system(size: 20).weight(.bold))
